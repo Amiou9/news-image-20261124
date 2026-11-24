@@ -2,6 +2,10 @@
 [![rank](https://make.fun/badge/news-image-20261124/Amiou9/news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
 [![reward](https://make.fun/badge/news-image-20261124/Amiou9/news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
 
-# Sum up 24 November's world news in one image
+# The World on Tuesday, 24 November 2026
 
-make.fun bounty entry "Sum up 24 November's world news in one image" (news-image-20261124) by @amiou9. The entry image (768x1024) is produced by the program in this repo and copied to /output/entry.png.
+One image summing up the world's news of Tuesday, 24 November 2026 — built for the make.fun bounty "Sum up 24 November's world news in one image". Version A (Klasik): a dense broadsheet front page on cream paper, serif masthead, 35 stories, each with its own original illustration, plus a realistic world map with the stories numbered on it.
+
+The three lead stories are COP31 collapsing in Antalya with no deal — the EU, the UK and island states rejecting a final text that omitted fossil fuels, the first no-deal COP since 2009; the United States blacklisting Singapore-based Megaspeed on the same day Nvidia reinstated Jensen Huang as CEO, sending Nvidia up 31.5% and the Nasdaq up 6.5%; and Zelensky urging four-party talks between Ukraine, Russia, the United States and Europe as soon as possible. Also inside: Russian aircraft entering South Korea's air defence zone, China sentencing an official to death for spying, the Pentagon rebuking Canada over its F-35 review, the Cikande factory fire rescue, Trump warning Iran of a "very traumatic" outcome, India holding third place in the Asia Power Index, Bangladesh vaccinating 50 million children against typhoid, the Thai-Cambodia border truce holding, the India–New Zealand Wellington Test ending in a draw, and Malaysia telling data centres to cut links with blacklisted firms — plus 22 more stories from the day. A DATE CHECK footer names the Monday 23 November stories left out, so every story here happened, or was first reported, on Tuesday 24 November 2026.
+
+How it runs: `main.py` is Python 3.13, standard library only, no network, deterministic. It checks `entry.png` is a whole PNG inside the competition's limits — signature, every chunk's checksum, dimensions, and a trailing IEND chunk — and places an exact copy at the output location the grader asks for.
