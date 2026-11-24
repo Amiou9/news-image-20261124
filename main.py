@@ -48,6 +48,7 @@ def scan(raw):
         stop("does not begin with a PNG signature")
     cursor = 8
     header_seen = end_seen = False
+    data_seen = False
     width = height = None
     while cursor < len(raw):
         if cursor + 8 > len(raw):
@@ -66,6 +67,13 @@ def scan(raw):
         header_seen = True
         if kind == b"IHDR":
             width, height = struct.unpack(">II", payload[:8])
+            if width == 0 or height == 0:
+                stop("the IHDR chunk names a zero width or height")
+            bit_depth, colour = payload[8], payload[9]
+            if bit_depth not in (1, 2, 4, 8, 16) or colour not in (0, 2, 3, 4, 6):
+                stop("the IHDR chunk names an unknown bit depth or colour type")
+        if kind == b"IDAT":
+            data_seen = True
         if kind == b"IEND":
             end_seen = True
             if stop_at != len(raw):
@@ -73,6 +81,8 @@ def scan(raw):
         cursor = stop_at
     if not header_seen or not end_seen:
         stop("the picture has no IHDR or no IEND chunk")
+    if not data_seen:
+        stop("the picture has no IDAT chunk, so it carries no image data")
     return width, height
 
 
